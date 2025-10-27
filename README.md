@@ -1,6 +1,0 @@
-# Fake-Harmless-You-are-an-idiot-virus
-This is a fake and harmless "You are an idiot" virus made for prank purposes only. You may have heard about the legendary infamous "You are an idiot" virus. It infected thousands of computers by just opening its website. This script is the safe version of it. Once you download this, you will get three files: 1. idiot.mp3 2. idiot.png 3. You are an idiot.py. You just have to open the ".py" file. If you want to exit it, there are two options to close it safely:
-1. Alt+F4: This might be slow if you have started virus from longer time. If you haven't, just hold Alt+F4 until all windows get closed. If you have too much popups summoned earlier, second option will help surely.
-2. Close the terminal: This is the option that will 100% work. Look for the Command Prompt window in the taskbar. Right click on it and click "Close window". This is the main thing which keeps the whole popups alive. Basically, it is the root of the script. If you break it, the script will break too.
-
-Make sure to use this file only for prank purpose. Make sure where and how you use this script. And follow the steps carefully given below to prevent stuckking in. By the way, you will ot be stuck. If you are stuck still with these steps given below, just restart your PC and then everything will be closed. 
