@@ -16,20 +16,12 @@ def flash(label, img1, img2, state=[True]):
     state[0] = not state[0]
     label.after(500, flash, label, img1, img2, state)
 
-# 🪟 Create popup window at random location
+# 🪟 Create popup window with smooth movement
 def create_popup(master):
     popup = tk.Toplevel(master)
     popup.title("You Are An Idiot")
     popup.resizable(False, False)
-
-    # Get screen size
-    screen_width = popup.winfo_screenwidth()
-    screen_height = popup.winfo_screenheight()
-
-    # Random position
-    x = random.randint(0, screen_width - 400)
-    y = random.randint(0, screen_height - 300)
-    popup.geometry(f"400x300+{x}+{y}")
+    popup.geometry("400x300")
 
     img = Image.open("idiot.png").resize((300, 200))
     inverted = ImageOps.invert(img.convert("RGB"))
@@ -46,8 +38,32 @@ def create_popup(master):
 
     flash(label, tk_img, tk_inverted)
 
-# 🔁 Launch popups endlessly at random positions
-def launch_endless_popups(master, delay=100):
+    # 🕺 Smooth movement variables
+    screen_width = popup.winfo_screenwidth()
+    screen_height = popup.winfo_screenheight()
+    x = random.randint(0, screen_width - 400)
+    y = random.randint(0, screen_height - 300)
+    dx = random.choice([-3, 3])
+    dy = random.choice([-3, 3])
+
+    def move():
+        nonlocal x, y, dx, dy
+        x += dx
+        y += dy
+
+        # Bounce off edges
+        if x <= 0 or x >= screen_width - 400:
+            dx = -dx
+        if y <= 0 or y >= screen_height - 300:
+            dy = -dy
+
+        popup.geometry(f"400x300+{x}+{y}")
+        popup.after(30, move)
+
+    move()
+
+# 🔁 Launch popups endlessly
+def launch_endless_popups(master, delay=1000):
     def summon():
         create_popup(master)
         master.after(delay, summon)
@@ -58,5 +74,5 @@ pygame.init()
 root = tk.Tk()
 root.withdraw()
 play_audio()
-launch_endless_popups(root, delay=100)  # Endless popups every 0.1s
+launch_endless_popups(root, delay=1000)  # One new dancing window every second
 root.mainloop()
